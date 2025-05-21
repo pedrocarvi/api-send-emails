@@ -1,49 +1,58 @@
-API de Envío de Mails con Express y Nodemailer
+## API de Envío de Mails con Express y Nodemailer
 
 Este proyecto es una mini API construida con Express para enviar emails a través de una cuenta de Gmail. Utiliza plantillas HTML almacenadas en la carpeta templates/ y toda la configuración se realiza mediante variables de entorno.
 
-📋 Requisitos Previos
+### 📋 Requisitos Previos
 
-Node.js (>= 14) o nvs/nvm
+Node
 
-npm o Yarn
+- Node.js (>= 14) o nvs/nvm
+
+- npm o Yarn
 
 Cuenta de Gmail con:
 
-Verificación en Dos Pasos (2FA) habilitada.
+- Verificación en Dos Pasos (2FA) habilitada
 
-Contraseña de Aplicación (App Password) generada para uso con Nodemailer.
+- Contraseña de Aplicación (App Password) generada para uso con Nodemailer
 
-🚀 Instalación y Configuración
+### 🚀 Instalación y Configuración
 
-Clonar el repositorio
+1. **Clonar el repositorio**
+```
+git clone <URL repo>
+cd api-send-emails
+```
 
-git clone <URL-del-repositorio>
-cd api-send-email
+2. **Instalar dependencias**
 
-Instalar dependencias
+```
+npm install o yarn install
+```
 
-npm install
+3. **Crear archivo de entorno**
 
-Crear archivo de entorno y completar con los datos (revisar .env.example)
-touch .env
+Crea un archivo .env en el root del proyecto y agrega y completá los datos que se pueden encontrar en el archivo .env.example.
 
-Crear App Password en Gmail
+4. **Configurar contraseña de aplicación en Gmail**
 
-Entra a Google Account > Seguridad.
+-  Ingresa a **Google Account > Seguridad**
+-  Habilita **Verificación en Dos Pasos**
+-  En **Contraseñas de aplicaciones**, genera una nueva contraseña:
+   - Selecciona **Otro**
+   - Ponle un nombre (por ejemplo: `nodemailer`)
+    - Copia los 16 dígitos y pégalos en `SMTP_PASS` dentro de tu archivo `.env`
 
-Habilita la Verificación en Dos Pasos.
+---
 
-En Contraseñas de aplicaciones, genera una nueva contraseña, selecciona Otro y ponle un nombre (por ejemplo nodemailer).
+### 🛠️ Uso
 
-Copia los 16 dígitos y pégalos en SMTP_PASS de tu .env.
+1. **Levantar el servidor**
 
-🛠️ Uso
-
-Levantar el servidor
-
+```
 node index.js
+```
 
-Enviar un correo
+2. **Enviar un correo**
 
 Endpoint: POST http://localhost:${process.env.PORT || 3000}/send-email
